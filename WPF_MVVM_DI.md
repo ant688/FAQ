@@ -213,3 +213,43 @@ Khi bạn chạy ứng dụng và nhấn nút "Send Notification", ứng dụng 
 3. **Lợi ích của DI trong MVVM**:
    - DI giúp đơn giản hóa việc quản lý các phụ thuộc, làm cho mã dễ bảo trì và kiểm thử hơn.
    - MVVM tách biệt logic kinh doanh khỏi giao diện người dùng, làm cho ứng dụng dễ dàng mở rộng và thay đổi hơn.
+
+Trong ứng dụng WPF sử dụng Dependency Injection (DI), `MainViewModel` được tạo ra khi `MainWindow` được khởi tạo thông qua `ServiceProvider`. Điều này xảy ra do `MainWindow` có một constructor nhận `MainViewModel` làm tham số, và `MainWindow` được khởi tạo bằng cách sử dụng `ServiceProvider`, nơi đã được cấu hình để biết cách cung cấp `MainViewModel`.
+
+### Cụ thể quá trình như sau:
+
+1. **Đăng ký các dịch vụ và ViewModel**:
+   - Trong `App.xaml.cs`, các dịch vụ và ViewModel, bao gồm `MainViewModel` và `MainWindow`, được đăng ký với `ServiceCollection`:
+     ```csharp
+     private void ConfigureServices(ServiceCollection services)
+     {
+         services.AddTransient<IEmailService, EmailService>();
+         services.AddTransient<NotificationService>();
+         services.AddTransient<MainViewModel>();
+         services.AddTransient<MainWindow>();
+     }
+     ```
+
+2. **Khởi tạo `MainWindow`**:
+   - Khi ứng dụng khởi động (`OnStartup`), `ServiceProvider` được xây dựng từ `ServiceCollection` và sau đó được sử dụng để khởi tạo `MainWindow`:
+     ```csharp
+     var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+     mainWindow.Show();
+     ```
+
+3. **Inject `MainViewModel` vào `MainWindow`**:
+   - Khi `ServiceProvider` khởi tạo `MainWindow`, nó tự động nhận ra rằng `MainWindow` cần một `MainViewModel` (do constructor của `MainWindow` yêu cầu). `ServiceProvider` sau đó sẽ tạo ra một instance của `MainViewModel` và truyền nó vào constructor của `MainWindow`.
+
+4. **Khi `MainWindow` được tạo ra**:
+   - Lúc này, `MainViewModel` cũng đã được khởi tạo và được inject vào `MainWindow`. `MainWindow` sau đó thiết lập `DataContext` của nó bằng `MainViewModel`, cho phép binding dữ liệu trong XAML hoạt động:
+     ```csharp
+     public MainWindow(MainViewModel viewModel)
+     {
+         InitializeComponent();
+         DataContext = viewModel;
+     }
+     ```
+
+### Tổng kết:
+
+`MainViewModel` được tạo ra ngay tại thời điểm bạn gọi `mainWindow = _serviceProvider.GetRequiredService<MainWindow>();`. Cụ thể, quá trình này xảy ra khi `ServiceProvider` khởi tạo `MainWindow` và nhận ra rằng `MainWindow` cần một instance của `MainViewModel`. Do đó, `MainViewModel` sẽ được khởi tạo trước khi `MainWindow` hoàn tất quá trình khởi tạo của nó.
