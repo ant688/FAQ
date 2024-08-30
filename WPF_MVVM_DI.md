@@ -336,7 +336,7 @@ Khi quyết định nên đăng ký `MainWindow` là `Transient` hay `Singleton`
 
 Trong phần lớn các trường hợp, `Singleton` sẽ là lựa chọn tốt nhất cho `MainWindow`.
 
-### Open new window
+### Open new window - Mở cửa số mới
 Để mở một cửa sổ mới hiển thị danh sách các liên hệ trong một ứng dụng WPF sử dụng mô hình MVVM và Dependency Injection (DI), bạn có thể thực hiện các bước sau:
 
 ### 1. Tạo `Contact` Model
@@ -465,10 +465,10 @@ using System.Windows.Input;
 
 public class MainViewModel : BaseViewModel
 {
-    private readonly ServiceProvider _serviceProvider;
+    private readonly IServiceProvider _serviceProvider;
     public ICommand OpenContactsCommand { get; }
 
-    public MainViewModel(ServiceProvider serviceProvider)
+    public MainViewModel(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         OpenContactsCommand = new RelayCommand(OpenContacts);
