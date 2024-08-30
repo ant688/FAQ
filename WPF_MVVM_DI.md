@@ -140,6 +140,7 @@ namespace DIWpfMvvmExample
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
+            // Khởi tạo và hiển thị MainWindow thông qua ServiceProvider
             var mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
         }
@@ -180,9 +181,13 @@ namespace DIWpfMvvmExample
 {
     public partial class MainWindow : Window
     {
-        public MainWindow(MainViewModel viewModel)
+        public MainWindow()
         {
             InitializeComponent();
+        }
+        public MainWindow(MainViewModel viewModel)
+        :this() //Gọi constructor mặc định
+        {
             DataContext = viewModel;
         }
     }
