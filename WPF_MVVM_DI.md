@@ -255,3 +255,36 @@ Trong ứng dụng WPF sử dụng Dependency Injection (DI), `MainViewModel` đ
 ### Tổng kết:
 
 `MainViewModel` được tạo ra ngay tại thời điểm bạn gọi `mainWindow = _serviceProvider.GetRequiredService<MainWindow>();`. Cụ thể, quá trình này xảy ra khi `ServiceProvider` khởi tạo `MainWindow` và nhận ra rằng `MainWindow` cần một instance của `MainViewModel`. Do đó, `MainViewModel` sẽ được khởi tạo trước khi `MainWindow` hoàn tất quá trình khởi tạo của nó.
+
+
+
+Câu lệnh `services.AddTransient<IEmailService, EmailService>();` là một phần của việc cấu hình Dependency Injection (DI) trong ứng dụng .NET, và cụ thể là trong ứng dụng WPF sử dụng DI.
+
+### Giải thích:
+
+- **`services`**: Đây là một đối tượng của `IServiceCollection`, dùng để đăng ký các dịch vụ và cấu hình các phụ thuộc (dependencies) mà ứng dụng sẽ sử dụng. `IServiceCollection` là một tập hợp các dịch vụ được sử dụng bởi `ServiceProvider` để tạo ra các instance của các dịch vụ này khi cần thiết.
+
+- **`AddTransient<IEmailService, EmailService>()`**:
+  - **`IEmailService`**: Đây là interface định nghĩa các chức năng mà dịch vụ email phải cung cấp. Nó đóng vai trò là hợp đồng để các lớp khác có thể tương tác với dịch vụ này mà không cần biết về cách triển khai cụ thể.
+  - **`EmailService`**: Đây là lớp triển khai cụ thể của `IEmailService`. Lớp này chứa logic thực sự để gửi email hoặc thực hiện các chức năng được định nghĩa trong `IEmailService`.
+  - **`AddTransient<TService, TImplementation>()`**: Đây là một phương thức mở rộng của `IServiceCollection` được sử dụng để đăng ký một dịch vụ theo thời gian sống (lifecycle) dạng "transient". Khi một dịch vụ được đăng ký là "transient", mỗi khi dịch vụ này được yêu cầu (injected), một instance mới của lớp triển khai (`EmailService` trong trường hợp này) sẽ được tạo ra.
+
+### Các thời gian sống (lifecycles) trong DI:
+- **Transient**:
+  - Mỗi khi một dịch vụ được yêu cầu, một instance mới sẽ được tạo ra. Thích hợp cho các dịch vụ có trạng thái ngắn hạn hoặc không lưu giữ trạng thái.
+  - Ví dụ: `services.AddTransient<IEmailService, EmailService>();`
+  
+- **Scoped**:
+  - Một instance của dịch vụ sẽ được tạo cho mỗi "scope" (phạm vi) riêng biệt, thường là mỗi request web trong ứng dụng ASP.NET Core.
+  - Ví dụ: `services.AddScoped<IEmailService, EmailService>();`
+  
+- **Singleton**:
+  - Chỉ một instance duy nhất của dịch vụ sẽ được tạo ra và sử dụng xuyên suốt vòng đời của ứng dụng.
+  - Ví dụ: `services.AddSingleton<IEmailService, EmailService>();`
+
+### Ví dụ về `AddTransient`:
+
+Giả sử bạn có một `MainViewModel` cần sử dụng `IEmailService` để gửi email. Khi `MainViewModel` được khởi tạo, nó sẽ yêu cầu một instance của `IEmailService`. Do `IEmailService` đã được đăng ký với DI container bằng `AddTransient`, một instance mới của `EmailService` sẽ được tạo ra và inject vào `MainViewModel`.
+
+### Tóm lại:
+Câu lệnh `services.AddTransient<IEmailService, EmailService>();` đăng ký `EmailService` như là một dịch vụ thực thi cho interface `IEmailService` với thời gian sống dạng "transient", đảm bảo rằng mỗi lần `IEmailService` được yêu cầu, một instance mới của `EmailService` sẽ được tạo ra.
