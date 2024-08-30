@@ -85,3 +85,103 @@ notificationService.SendNotification("Hello World!");
 ```
 
 Ở đây, `ServiceCollection` được dùng để đăng ký các dịch vụ, sau đó `ServiceProvider` được dùng để lấy các dịch vụ đã được cấu hình. Phụ thuộc sẽ tự động được tiêm bởi container này.
+Dưới đây là một ví dụ hoàn chỉnh về việc sử dụng Dependency Injection (DI) trong một ứng dụng C# console đơn giản. Ứng dụng này sẽ có một lớp `NotificationService` sử dụng `EmailService` để gửi thông báo. Chúng ta sẽ sử dụng DI để inject các phụ thuộc vào `NotificationService`.
+
+### Bước 1: Tạo các Interface và Lớp Dịch vụ
+
+```csharp
+using System;
+
+namespace DIExample
+{
+    // Định nghĩa interface IEmailService
+    public interface IEmailService
+    {
+        void SendEmail(string to, string subject, string body);
+    }
+
+    // Triển khai interface IEmailService trong lớp EmailService
+    public class EmailService : IEmailService
+    {
+        public void SendEmail(string to, string subject, string body)
+        {
+            // Giả sử đây là logic gửi email thực tế
+            Console.WriteLine($"Sending Email to {to}: {subject} - {body}");
+        }
+    }
+
+    // Lớp NotificationService sử dụng IEmailService
+    public class NotificationService
+    {
+        private readonly IEmailService _emailService;
+
+        // Inject IEmailService thông qua constructor
+        public NotificationService(IEmailService emailService)
+        {
+            _emailService = emailService;
+        }
+
+        public void SendNotification(string message)
+        {
+            // Sử dụng emailService để gửi email
+            _emailService.SendEmail("user@example.com", "Notification", message);
+        }
+    }
+}
+```
+
+### Bước 2: Cấu hình Dependency Injection
+
+Chúng ta sẽ sử dụng `Microsoft.Extensions.DependencyInjection` để cấu hình DI container.
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using System;
+
+namespace DIExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Tạo một DI container mới
+            var services = new ServiceCollection();
+
+            // Đăng ký các dịch vụ
+            services.AddTransient<IEmailService, EmailService>(); // IEmailService sẽ được triển khai bởi EmailService
+            services.AddTransient<NotificationService>(); // Đăng ký NotificationService
+
+            // Xây dựng ServiceProvider từ ServiceCollection
+            var serviceProvider = services.BuildServiceProvider();
+
+            // Lấy một instance của NotificationService từ container
+            var notificationService = serviceProvider.GetService<NotificationService>();
+
+            // Gửi một thông báo
+            notificationService.SendNotification("This is a test notification.");
+
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+### Giải thích các bước:
+1. **Tạo các interface và lớp dịch vụ**: `IEmailService` là interface định nghĩa các hành vi gửi email. `EmailService` là lớp triển khai của `IEmailService`. `NotificationService` sử dụng `IEmailService` để gửi thông báo.
+
+2. **Cấu hình DI**:
+   - Tạo một `ServiceCollection` để đăng ký các dịch vụ.
+   - Sử dụng `AddTransient` để đăng ký dịch vụ `IEmailService` và `NotificationService`. `AddTransient` có nghĩa là một instance mới sẽ được tạo ra mỗi lần có yêu cầu.
+   - Xây dựng `ServiceProvider` từ `ServiceCollection`.
+
+3. **Sử dụng DI**:
+   - Lấy một instance của `NotificationService` từ container.
+   - Gọi phương thức `SendNotification` để gửi thông báo.
+
+Khi chạy chương trình, bạn sẽ thấy đầu ra như sau:
+
+```
+Sending Email to user@example.com: Notification - This is a test notification.
+```
+
+Điều này cho thấy rằng `NotificationService` đã sử dụng `EmailService` để gửi thông báo, và phụ thuộc (`IEmailService`) đã được inject thành công.
