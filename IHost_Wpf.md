@@ -198,3 +198,5 @@ Khi bạn chạy ứng dụng, `MainWindow` sẽ được khởi tạo từ DI c
 - **Logging**: Logging được cấu hình để ghi lại thông tin ra console, có thể mở rộng hoặc thay đổi theo yêu cầu.
 
 Sử dụng `Microsoft.Extensions.Hosting` trong WPF giúp bạn tổ chức ứng dụng một cách rõ ràng và dễ bảo trì, đồng thời tận dụng được các công nghệ hiện đại như DI, cấu hình và logging.
+
+### II - Mở cửa số mới
