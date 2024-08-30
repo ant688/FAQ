@@ -335,3 +335,173 @@ Khi quyết định nên đăng ký `MainWindow` là `Transient` hay `Singleton`
   ```
 
 Trong phần lớn các trường hợp, `Singleton` sẽ là lựa chọn tốt nhất cho `MainWindow`.
+
+### Open new window
+Để mở một cửa sổ mới hiển thị danh sách các liên hệ trong một ứng dụng WPF sử dụng mô hình MVVM và Dependency Injection (DI), bạn có thể thực hiện các bước sau:
+
+### 1. Tạo `Contact` Model
+
+Trước tiên, bạn cần một mô hình (model) để biểu diễn thông tin liên hệ.
+
+**Contact.cs**
+```csharp
+public class Contact
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+}
+```
+
+### 2. Tạo `ContactsViewModel`
+
+Tiếp theo, tạo một `ViewModel` để quản lý danh sách các liên hệ. `ViewModel` này sẽ chứa một danh sách các `Contact` và có thể có các lệnh (command) để tương tác với UI.
+
+**ContactsViewModel.cs**
+```csharp
+using System.Collections.ObjectModel;
+
+public class ContactsViewModel : BaseViewModel
+{
+    public ObservableCollection<Contact> Contacts { get; }
+
+    public ContactsViewModel()
+    {
+        // Khởi tạo danh sách liên hệ với một số dữ liệu mẫu
+        Contacts = new ObservableCollection<Contact>
+        {
+            new Contact { Name = "Alice", Email = "alice@example.com", Phone = "123-456-7890" },
+            new Contact { Name = "Bob", Email = "bob@example.com", Phone = "098-765-4321" },
+            new Contact { Name = "Charlie", Email = "charlie@example.com", Phone = "555-555-5555" }
+        };
+    }
+}
+```
+
+### 3. Tạo `ContactsWindow`
+
+Tạo một cửa sổ mới để hiển thị danh sách liên hệ, và liên kết cửa sổ này với `ContactsViewModel`.
+
+**ContactsWindow.xaml**
+```xml
+<Window x:Class="DIWpfMvvmExample.ContactsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Contacts" Height="300" Width="400">
+    <Grid>
+        <ListView ItemsSource="{Binding Contacts}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="120"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="150"/>
+                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}" Width="120"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
+```
+
+**ContactsWindow.xaml.cs**
+```csharp
+public partial class ContactsWindow : Window
+{
+    public ContactsWindow(ContactsViewModel viewModel)
+    {
+        InitializeComponent();
+        DataContext = viewModel;
+    }
+}
+```
+
+### 4. Cấu hình DI trong `App.xaml.cs`
+
+Đăng ký `ContactsViewModel` và `ContactsWindow` trong DI container.
+
+**App.xaml.cs**
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
+
+namespace DIWpfMvvmExample
+{
+    public partial class App : Application
+    {
+        private ServiceProvider _serviceProvider;
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+
+            _serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            mainWindow.Show();
+        }
+
+        private void ConfigureServices(ServiceCollection services)
+        {
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<NotificationService>();
+            services.AddTransient<MainViewModel>();
+            services.AddTransient<ContactsViewModel>();
+            services.AddTransient<ContactsWindow>();
+            services.AddTransient<MainWindow>();
+        }
+    }
+}
+```
+
+### 5. Mở cửa sổ `ContactsWindow` từ `MainWindow`
+
+Thêm một nút vào `MainWindow` để mở cửa sổ `ContactsWindow`.
+
+**MainViewModel.cs**
+```csharp
+using System.Windows.Input;
+
+public class MainViewModel : BaseViewModel
+{
+    private readonly ServiceProvider _serviceProvider;
+    public ICommand OpenContactsCommand { get; }
+
+    public MainViewModel(ServiceProvider serviceProvider)
+    {
+        _serviceProvider = serviceProvider;
+        OpenContactsCommand = new RelayCommand(OpenContacts);
+    }
+
+    private void OpenContacts()
+    {
+        var contactsWindow = _serviceProvider.GetRequiredService<ContactsWindow>();
+        contactsWindow.Show();
+    }
+}
+```
+
+**MainWindow.xaml**
+```xml
+<Window x:Class="DIWpfMvvmExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DI WPF MVVM Example" Height="200" Width="400">
+    <Grid>
+        <Button Content="Open Contacts" Width="150" Height="50"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Command="{Binding OpenContactsCommand}"/>
+    </Grid>
+</Window>
+```
+
+### Giải thích:
+
+- **ContactsWindow**: Là cửa sổ mới để hiển thị danh sách các liên hệ.
+- **ContactsViewModel**: Quản lý danh sách liên hệ và là `DataContext` của `ContactsWindow`.
+- **OpenContactsCommand**: Một `ICommand` trong `MainViewModel` để mở `ContactsWindow` khi người dùng nhấn nút.
+
+### Kết quả:
+
+Khi chạy ứng dụng và nhấn vào nút "Open Contacts" trên `MainWindow`, một cửa sổ mới `ContactsWindow` sẽ mở ra, hiển thị danh sách các liên hệ.
