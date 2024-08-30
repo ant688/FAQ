@@ -288,3 +288,50 @@ Giả sử bạn có một `MainViewModel` cần sử dụng `IEmailService` đ�
 
 ### Tóm lại:
 Câu lệnh `services.AddTransient<IEmailService, EmailService>();` đăng ký `EmailService` như là một dịch vụ thực thi cho interface `IEmailService` với thời gian sống dạng "transient", đảm bảo rằng mỗi lần `IEmailService` được yêu cầu, một instance mới của `EmailService` sẽ được tạo ra.
+
+### MainWindow
+Khi quyết định nên đăng ký `MainWindow` là `Transient` hay `Singleton`, bạn cần xem xét cách mà `MainWindow` sẽ được sử dụng trong ứng dụng của bạn. 
+
+### 1. **`MainWindow` là `Singleton`**
+
+- **Khi sử dụng**: 
+  - Trong hầu hết các ứng dụng WPF, `MainWindow` là cửa sổ chính duy nhất được tạo ra và tồn tại trong suốt thời gian sống của ứng dụng. 
+  - Việc sử dụng `Singleton` đảm bảo rằng chỉ có một instance duy nhất của `MainWindow` được tạo ra và tái sử dụng mỗi khi cần.
+
+- **Ưu điểm**:
+  - Giảm thiểu việc khởi tạo lại không cần thiết và tiết kiệm tài nguyên hệ thống.
+  - Dễ dàng quản lý trạng thái của cửa sổ chính, đặc biệt nếu `MainWindow` chứa dữ liệu hoặc trạng thái cần được duy trì trong suốt vòng đời của ứng dụng.
+
+- **Nhược điểm**:
+  - Khó khăn hơn trong việc kiểm thử đơn vị (unit testing) vì singleton có thể giữ trạng thái toàn cục.
+  - Nếu ứng dụng yêu cầu nhiều instance của `MainWindow` trong tương lai, việc thay đổi từ singleton có thể phức tạp.
+
+### 2. **`MainWindow` là `Transient`**
+
+- **Khi sử dụng**: 
+  - Khi bạn cần tạo ra nhiều instance của `MainWindow`, hoặc khi `MainWindow` không giữ bất kỳ trạng thái nào cần phải duy trì suốt vòng đời của ứng dụng.
+  - Dùng trong các trường hợp mà `MainWindow` có thể bị đóng và mở lại nhiều lần trong suốt thời gian ứng dụng chạy.
+
+- **Ưu điểm**:
+  - Mỗi khi bạn yêu cầu `MainWindow`, một instance mới sẽ được tạo ra, đảm bảo rằng không có dữ liệu hoặc trạng thái không mong muốn được tái sử dụng từ một instance trước đó.
+  - Dễ kiểm thử hơn vì mỗi test có thể khởi tạo một instance mới và sạch sẽ.
+
+- **Nhược điểm**:
+  - Sử dụng nhiều tài nguyên hơn do mỗi lần cần một cửa sổ mới, một instance mới phải được khởi tạo.
+  - Có thể khó quản lý trạng thái của ứng dụng nếu `MainWindow` là transient nhưng lại chứa dữ liệu quan trọng cần duy trì.
+
+### Kết luận:
+
+- **Thông thường, `MainWindow` nên được đăng ký là `Singleton`** trong hầu hết các ứng dụng WPF vì chỉ có một cửa sổ chính và nó thường tồn tại trong suốt vòng đời của ứng dụng.
+
+  ```csharp
+  services.AddSingleton<MainWindow>();
+  ```
+
+- **Sử dụng `Transient`** nếu bạn có một tình huống cụ thể cần nhiều cửa sổ chính hoặc bạn muốn tạo một cửa sổ mới mỗi lần cần sử dụng.
+
+  ```csharp
+  services.AddTransient<MainWindow>();
+  ```
+
+Trong phần lớn các trường hợp, `Singleton` sẽ là lựa chọn tốt nhất cho `MainWindow`.
