@@ -200,3 +200,198 @@ Khi bạn chạy ứng dụng, `MainWindow` sẽ được khởi tạo từ DI c
 Sử dụng `Microsoft.Extensions.Hosting` trong WPF giúp bạn tổ chức ứng dụng một cách rõ ràng và dễ bảo trì, đồng thời tận dụng được các công nghệ hiện đại như DI, cấu hình và logging.
 
 ### II - Mở cửa số mới
+Để mở một cửa sổ mới trong ứng dụng WPF khi sử dụng `IHost` và Dependency Injection (DI), bạn có thể làm theo các bước dưới đây. Giả sử bạn muốn mở một cửa sổ mới để hiển thị danh sách liên hệ khi nhấn một nút trong `MainWindow`.
+
+### Bước 1: Tạo một cửa sổ mới để hiển thị danh sách liên hệ
+
+**ContactsWindow.xaml**
+
+```xml
+<Window x:Class="WpfAppWithHost.ContactsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Contacts" Height="300" Width="400">
+    <Grid>
+        <ListBox ItemsSource="{Binding Contacts}" />
+    </Grid>
+</Window>
+```
+
+**ContactsWindow.xaml.cs**
+
+```csharp
+using System.Windows;
+
+namespace WpfAppWithHost
+{
+    public partial class ContactsWindow : Window
+    {
+        public ContactsWindow(ContactsViewModel viewModel)
+        {
+            InitializeComponent();
+            DataContext = viewModel;
+        }
+    }
+}
+```
+
+**ContactsViewModel.cs**
+
+```csharp
+using System.Collections.ObjectModel;
+
+namespace WpfAppWithHost
+{
+    public class ContactsViewModel
+    {
+        public ObservableCollection<string> Contacts { get; }
+
+        public ContactsViewModel()
+        {
+            Contacts = new ObservableCollection<string>
+            {
+                "Contact 1",
+                "Contact 2",
+                "Contact 3"
+            };
+        }
+    }
+}
+```
+
+### Bước 2: Đăng ký `ContactsWindow` và `ContactsViewModel` trong `App.xaml.cs`
+
+Cập nhật `App.xaml.cs` để đăng ký `ContactsWindow` và `ContactsViewModel` với DI container.
+
+**App.xaml.cs**
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Windows;
+
+namespace WpfAppWithHost
+{
+    public partial class App : Application
+    {
+        private IHost _host;
+
+        public App()
+        {
+            _host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    // Đăng ký các dịch vụ của bạn ở đây
+                    services.AddSingleton<MainWindow>();
+                    services.AddTransient<MainViewModel>();
+                    services.AddTransient<IHelloService, HelloService>();
+
+                    // Đăng ký thêm ContactsWindow và ContactsViewModel
+                    services.AddTransient<ContactsWindow>();
+                    services.AddTransient<ContactsViewModel>();
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                })
+                .Build();
+        }
+
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            // Khởi động Host
+            await _host.StartAsync();
+
+            // Lấy MainWindow từ DI container
+            var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+            mainWindow.Show();
+
+            base.OnStartup(e);
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            // Dừng Host khi ứng dụng thoát
+            await _host.StopAsync();
+            _host.Dispose();
+
+            base.OnExit(e);
+        }
+    }
+}
+```
+
+### Bước 3: Thêm command để mở cửa sổ mới từ `MainViewModel`
+
+Cập nhật `MainViewModel` để thêm một `ICommand` mở `ContactsWindow`.
+
+**MainViewModel.cs**
+
+```csharp
+using System.Windows.Input;
+
+namespace WpfAppWithHost
+{
+    public class MainViewModel
+    {
+        private readonly IHelloService _helloService;
+        private readonly IServiceProvider _serviceProvider;
+
+        public ICommand SayHelloCommand { get; }
+        public ICommand OpenContactsCommand { get; }
+
+        public MainViewModel(IHelloService helloService, IServiceProvider serviceProvider)
+        {
+            _helloService = helloService;
+            _serviceProvider = serviceProvider;
+
+            SayHelloCommand = new RelayCommand(SayHello);
+            OpenContactsCommand = new RelayCommand(OpenContacts);
+        }
+
+        private void SayHello()
+        {
+            _helloService.SayHello();
+        }
+
+        private void OpenContacts()
+        {
+            var contactsWindow = _serviceProvider.GetRequiredService<ContactsWindow>();
+            contactsWindow.Show();
+        }
+    }
+}
+```
+
+### Bước 4: Thêm nút mở cửa sổ Contacts trong `MainWindow.xaml`
+
+Cập nhật `MainWindow.xaml` để thêm một nút mở cửa sổ `ContactsWindow`.
+
+**MainWindow.xaml**
+
+```xml
+<Window x:Class="WpfAppWithHost.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WPF with Host" Height="200" Width="400">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Content="Say Hello" Command="{Binding SayHelloCommand}" />
+        <Button Content="Open Contacts" Command="{Binding OpenContactsCommand}" Margin="0,20,0,0"/>
+    </StackPanel>
+</Window>
+```
+
+### Bước 5: Chạy ứng dụng
+
+Khi bạn chạy ứng dụng, cửa sổ chính sẽ hiển thị với hai nút. Khi bạn nhấn nút "Open Contacts", cửa sổ `ContactsWindow` sẽ được mở và hiển thị danh sách các liên hệ.
+
+### Giải thích:
+
+- **`IServiceProvider` trong `MainViewModel`**: Được sử dụng để lấy `ContactsWindow` từ DI container và mở nó khi người dùng nhấn nút "Open Contacts".
+- **`AddTransient<ContactsWindow>`**: Đảm bảo rằng mỗi lần mở cửa sổ `ContactsWindow` sẽ tạo một instance mới.
+- **`ContactsViewModel`**: Cung cấp dữ liệu cho `ContactsWindow`, trong trường hợp này là một danh sách các tên liên hệ.
+
+Việc sử dụng `IHost` trong WPF giúp bạn quản lý các cửa sổ và dịch vụ trong ứng dụng một cách linh hoạt và hiệu quả hơn thông qua Dependency Injection.
