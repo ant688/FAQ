@@ -85,6 +85,8 @@ notificationService.SendNotification("Hello World!");
 ```
 
 Ở đây, `ServiceCollection` được dùng để đăng ký các dịch vụ, sau đó `ServiceProvider` được dùng để lấy các dịch vụ đã được cấu hình. Phụ thuộc sẽ tự động được tiêm bởi container này.
+
+
 Dưới đây là một ví dụ hoàn chỉnh về việc sử dụng Dependency Injection (DI) trong một ứng dụng C# console đơn giản. Ứng dụng này sẽ có một lớp `NotificationService` sử dụng `EmailService` để gửi thông báo. Chúng ta sẽ sử dụng DI để inject các phụ thuộc vào `NotificationService`.
 
 ### Bước 1: Tạo các Interface và Lớp Dịch vụ
