@@ -214,6 +214,8 @@ Khi bạn chạy ứng dụng và nhấn nút "Send Notification", ứng dụng 
    - DI giúp đơn giản hóa việc quản lý các phụ thuộc, làm cho mã dễ bảo trì và kiểm thử hơn.
    - MVVM tách biệt logic kinh doanh khỏi giao diện người dùng, làm cho ứng dụng dễ dàng mở rộng và thay đổi hơn.
 
+### Giải thích quá trình tạo ra MainViewModel khi gọi MainWindow
+
 Trong ứng dụng WPF sử dụng Dependency Injection (DI), `MainViewModel` được tạo ra khi `MainWindow` được khởi tạo thông qua `ServiceProvider`. Điều này xảy ra do `MainWindow` có một constructor nhận `MainViewModel` làm tham số, và `MainWindow` được khởi tạo bằng cách sử dụng `ServiceProvider`, nơi đã được cấu hình để biết cách cung cấp `MainViewModel`.
 
 ### Cụ thể quá trình như sau:
