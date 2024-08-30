@@ -135,6 +135,7 @@ namespace DIWpfMvvmExample
         {
             base.OnStartup(e);
 
+            // Cấu hình dịch vụ
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
@@ -185,6 +186,7 @@ namespace DIWpfMvvmExample
         {
             InitializeComponent();
         }
+
         public MainWindow(MainViewModel viewModel)
         :this() //Gọi constructor mặc định
         {
