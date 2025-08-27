@@ -1,14 +1,58 @@
-<nav class="nav flex-column">
-    <a class="nav-link" href="/">Home</a>
-    <a class="nav-link" href="/counter">Counter (Protected)</a>
+// Services/CustomAuthStateProvider.cs
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Security.Claims;
 
-    <AuthorizeView>
-        <Authorized>
-            <span class="nav-link disabled">Hello, @context.User.Identity?.Name</span>
-            <a class="nav-link" href="/logout">Logout</a>
-        </Authorized>
-        <NotAuthorized>
-            <a class="nav-link" href="/login">Login</a>
-        </NotAuthorized>
-    </AuthorizeView>
-</nav>
+namespace Authentication_example.Services
+{
+    public class CustomAuthStateProvider : AuthenticationStateProvider
+    {
+        private ClaimsPrincipal _user = new(new ClaimsIdentity());
+
+        public override Task<AuthenticationState> GetAuthenticationStateAsync()
+            => Task.FromResult(new AuthenticationState(_user));
+
+        public Task RestoreAsync(string? username)
+        {
+            if (!string.IsNullOrWhiteSpace(username))
+                SetUser(username);
+            else
+                ClearUser();
+
+            return Task.CompletedTask;
+        }
+
+        public Task<bool> SignInAsync(string username, string password)
+        {
+            if (!string.IsNullOrWhiteSpace(username) && password == "123456")
+            {
+                SetUser(username);
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+        }
+
+        public Task SignOutAsync()
+        {
+            ClearUser();
+            return Task.CompletedTask;
+        }
+
+        private void SetUser(string username)
+        {
+            var id = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Role, "User")
+            }, "DemoAuth");
+
+            _user = new ClaimsPrincipal(id);
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
+
+        private void ClearUser()
+        {
+            _user = new ClaimsPrincipal(new ClaimsIdentity());
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
+    }
+}
