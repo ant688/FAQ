@@ -1,65 +1,14 @@
-@page "/login"
+@page "/logout"
 @inject NavigationManager Nav
 @inject AuthenticationStateProvider AuthStateProvider
 
-<h3>Login</h3>
-
-@if (error != null)
-{
-    <div class="alert alert-danger">@error</div>
-}
-
-<EditForm Model="@model" OnValidSubmit="HandleLogin">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="mb-3">
-        <label class="form-label">Username</label>
-        <InputText class="form-control" @bind-Value="model.Username" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <InputText type="password" class="form-control" @bind-Value="model.Password" />
-        <div class="form-text">Demo password is <code>123456</code>.</div>
-    </div>
-    <button class="btn btn-primary" type="submit" disabled="@busy">Login</button>
-</EditForm>
+<p>Signing you out…</p>
 
 @code {
-    private readonly LoginModel model = new();
-    private bool busy;
-    private string? error;
-
-    private async Task HandleLogin()
+    protected override async Task OnInitializedAsync()
     {
-        busy = true;
-        error = null;
-        try
-        {
-            var provider = (BlazorAuthDemo.Services.CustomAuthStateProvider)AuthStateProvider;
-            var ok = await provider.SignInAsync(model.Username, model.Password);
-
-            if (ok)
-            {
-                // Back to home (or to ReturnUrl if you add it)
-                Nav.NavigateTo("/", replace: true);
-            }
-            else
-            {
-                error = "Invalid username or password.";
-            }
-        }
-        finally
-        {
-            busy = false;
-        }
-    }
-
-    public class LoginModel
-    {
-        [System.ComponentModel.DataAnnotations.Required]
-        public string Username { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required]
-        public string Password { get; set; } = "";
+        var provider = (BlazorAuthDemo.Services.CustomAuthStateProvider)AuthStateProvider;
+        await provider.SignOutAsync();
+        Nav.NavigateTo("/", replace: true);
     }
 }
