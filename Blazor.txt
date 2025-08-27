@@ -1,58 +1,22 @@
-// Services/CustomAuthStateProvider.cs
-using Microsoft.AspNetCore.Components.Authorization;
-using System.Security.Claims;
+<!-- Components/AuthBootstrapper.razor -->
+@inject Microsoft.JSInterop.IJSRuntime JS
+@inject Authentication_example.Services.CustomAuthStateProvider Auth
 
-namespace Authentication_example.Services
-{
-    public class CustomAuthStateProvider : AuthenticationStateProvider
+@code {
+    private bool _done;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        private ClaimsPrincipal _user = new(new ClaimsIdentity());
+        if (!firstRender || _done) return;
 
-        public override Task<AuthenticationState> GetAuthenticationStateAsync()
-            => Task.FromResult(new AuthenticationState(_user));
+        var mod = await JS.InvokeAsync<Microsoft.JSInterop.IJSObjectReference>(
+            "import", "/authStorage.js");
 
-        public Task RestoreAsync(string? username)
-        {
-            if (!string.IsNullOrWhiteSpace(username))
-                SetUser(username);
-            else
-                ClearUser();
+        var username = await mod.InvokeAsync<string>("getSessionValue", "BlazorAuthDemo:username");
+        await Auth.RestoreAsync(username);
 
-            return Task.CompletedTask;
-        }
-
-        public Task<bool> SignInAsync(string username, string password)
-        {
-            if (!string.IsNullOrWhiteSpace(username) && password == "123456")
-            {
-                SetUser(username);
-                return Task.FromResult(true);
-            }
-            return Task.FromResult(false);
-        }
-
-        public Task SignOutAsync()
-        {
-            ClearUser();
-            return Task.CompletedTask;
-        }
-
-        private void SetUser(string username)
-        {
-            var id = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.Name, username),
-                new Claim(ClaimTypes.Role, "User")
-            }, "DemoAuth");
-
-            _user = new ClaimsPrincipal(id);
-            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-        }
-
-        private void ClearUser()
-        {
-            _user = new ClaimsPrincipal(new ClaimsIdentity());
-            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-        }
+        await mod.DisposeAsync();
+        _done = true;
+        StateHasChanged(); // let UI update after auth restored
     }
 }
