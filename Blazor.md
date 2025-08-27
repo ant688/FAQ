@@ -1,3 +1,4 @@
+```
 @page "/login"
 @inject NavigationManager Nav
 @inject AuthenticationStateProvider AuthStateProvider
