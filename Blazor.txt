@@ -1,14 +1,14 @@
-@page "/logout"
-@inject NavigationManager Nav
-@inject AuthenticationStateProvider AuthStateProvider
+<nav class="nav flex-column">
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="/counter">Counter (Protected)</a>
 
-<p>Signing you out…</p>
-
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        var provider = (BlazorAuthDemo.Services.CustomAuthStateProvider)AuthStateProvider;
-        await provider.SignOutAsync();
-        Nav.NavigateTo("/", replace: true);
-    }
-}
+    <AuthorizeView>
+        <Authorized>
+            <span class="nav-link disabled">Hello, @context.User.Identity?.Name</span>
+            <a class="nav-link" href="/logout">Logout</a>
+        </Authorized>
+        <NotAuthorized>
+            <a class="nav-link" href="/login">Login</a>
+        </NotAuthorized>
+    </AuthorizeView>
+</nav>
