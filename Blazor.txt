@@ -1,29 +1,65 @@
+@page "/login"
+@inject NavigationManager Nav
+@inject AuthenticationStateProvider AuthStateProvider
 
-@using Microsoft.AspNetCore.Components.Authorization
+<h3>Login</h3>
 
-<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly">
-        <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layouts.MainLayout)">
-                <NotAuthorized>
-                    <p class="m-3">You are not authorized. Please <a href="/login">log in</a>.</p>
-                </NotAuthorized>
-                <Authorizing>
-                    <p class="m-3">Authorizing…</p>
-                </Authorizing>
-            </AuthorizeRouteView>
-        </Found>
-        <NotFound>
-            <p class="m-3">Sorry, there’s nothing at this address.</p>
-        </NotFound>
-    </Router>
-</CascadingAuthenticationState>
+@if (error != null)
+{
+    <div class="alert alert-danger">@error</div>
+}
+
+<EditForm Model="@model" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <InputText class="form-control" @bind-Value="model.Username" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <InputText type="password" class="form-control" @bind-Value="model.Password" />
+        <div class="form-text">Demo password is <code>123456</code>.</div>
+    </div>
+    <button class="btn btn-primary" type="submit" disabled="@busy">Login</button>
+</EditForm>
 
 @code {
-    // Optional: provide a default layout if your template didn’t create one.
-    // Replace Layouts.MainLayout with whatever your project uses.
-    private static class Layouts
+    private readonly LoginModel model = new();
+    private bool busy;
+    private string? error;
+
+    private async Task HandleLogin()
     {
-        public class MainLayout : LayoutComponentBase { }
+        busy = true;
+        error = null;
+        try
+        {
+            var provider = (BlazorAuthDemo.Services.CustomAuthStateProvider)AuthStateProvider;
+            var ok = await provider.SignInAsync(model.Username, model.Password);
+
+            if (ok)
+            {
+                // Back to home (or to ReturnUrl if you add it)
+                Nav.NavigateTo("/", replace: true);
+            }
+            else
+            {
+                error = "Invalid username or password.";
+            }
+        }
+        finally
+        {
+            busy = false;
+        }
+    }
+
+    public class LoginModel
+    {
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Username { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Password { get; set; } = "";
     }
 }
