@@ -1,8 +1,10 @@
 ``` razor
 @page "/login"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@inject IHttpContextAccessor HttpCtx
 @inject NavigationManager Nav
-@inject AuthenticationStateProvider AuthStateProvider
-@inject Microsoft.JSInterop.IJSRuntime JS
 
 <h3>Login</h3>
 
@@ -15,9 +17,7 @@
           OnValidSubmit="HandleLogin"
           FormName="LoginForm"
           Method="FormMethod.Post">
-    <!-- MUST be inside the form and FormName must match -->
     <AntiforgeryToken FormName="LoginForm" />
-
     <DataAnnotationsValidator />
     <ValidationSummary />
 
@@ -31,34 +31,35 @@
         <div class="form-text">Demo password is <code>123456</code>.</div>
     </div>
 
-    <button class="btn btn-primary" type="submit" disabled="@busy">Login</button>
+    <button class="btn btn-primary" type="submit">Login</button>
 </EditForm>
 
 @code {
     private readonly LoginModel model = new();
-    private bool busy;
     private string? error;
 
     private async Task HandleLogin()
     {
-        busy = true; error = null;
-
-        var provider = (Authentication_example.Services.CustomAuthStateProvider)AuthStateProvider;
-        var ok = await provider.SignInAsync(model.Username, model.Password);
-
-        if (ok)
-        {
-            var mod = await JS.InvokeAsync<IJSObjectReference>("import", "/authStorage.js");
-            await mod.InvokeVoidAsync("setSessionValue", "BlazorAuthDemo:username", model.Username);
-            await mod.DisposeAsync();
-            Nav.NavigateTo("/", replace: true);
-        }
-        else
+        if (string.IsNullOrWhiteSpace(model.Username) || model.Password != "123456")
         {
             error = "Invalid username or password.";
+            return;
         }
 
-        busy = false;
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, model.Username),
+            new Claim(ClaimTypes.Role, "User")
+        };
+
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var principal = new ClaimsPrincipal(identity);
+
+        await HttpCtx.HttpContext!.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            principal);
+
+        Nav.NavigateTo("/", replace: true);
     }
 
     public class LoginModel
