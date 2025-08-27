@@ -90,3 +90,12 @@ namespace BlazorAuthDemo.Services
         }
     }
 }
+
+
+
+export function setSessionValue(key, value) {
+  sessionStorage.setItem(key, value ?? "");
+}
+export function getSessionValue(key) {
+  return sessionStorage.getItem(key);
+}
