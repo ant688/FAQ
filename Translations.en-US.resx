@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="ThemeSubtitle" xml:space="preserve">
+    <value>Select which application theme to display</value>
+  </data>
+  <data name="ApplyInspectionResultButtonText" xml:space="preserve">
+    <value>Apply inspection result on AWI file</value>
+  </data>
+  <data name="DestinationCount" xml:space="preserve">
+    <value>Destination:</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English (US)</value>
+  </data>
+  <data name="ExcelWorkbook" xml:space="preserve">
+    <value>Excel workbook</value>
+  </data>
+  <data name="ExportInspectionResultButtonText" xml:space="preserve">
+    <value>Export result as ...</value>
+  </data>
+  <data name="FileLoadedToastHeader" xml:space="preserve">
+    <value>File loaded</value>
+  </data>
+  <data name="FileUnloadedToastContent" xml:space="preserve">
+    <value>You need select one AWI to continue</value>
+  </data>
+  <data name="FileUnloadedToastHeader" xml:space="preserve">
+    <value>File unloaded</value>
+  </data>
+  <data name="MsgInspectionOverTitle" xml:space="preserve">
+    <value>Inspection finished</value>
+  </data>
+  <data name="InspectionResultHeader" xml:space="preserve">
+    <value>Inspection result</value>
+  </data>
+  <data name="Inspector" xml:space="preserve">
+    <value>Inspector</value>
+  </data>
+  <data name="IssueCountText" xml:space="preserve">
+    <value>Issue found:</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>System (use device language)</value>
+  </data>
+  <data name="LanguageSubtitle" xml:space="preserve">
+    <value>Select application display language</value>
+  </data>
+  <data name="MsgWrongFileContent" xml:space="preserve">
+    <value>The Excel file is not valid or does not contain sheet 'Accessories' {0} Please select again</value>
+  </data>
+  <data name="MsgWrongFileTitle" xml:space="preserve">
+    <value>Wrong AWI selected</value>
+  </data>
+  <data name="NGContentCol" xml:space="preserve">
+    <value>NG Content</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
+  <data name="SelectFileButtonnText" xml:space="preserve">
+    <value>Select AWI file</value>
+  </data>
+  <data name="SelectFileDialogTitle" xml:space="preserve">
+    <value>Select AWI file</value>
+  </data>
+  <data name="SelectModelCaptionText" xml:space="preserve">
+    <value>Choose model</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="StartInspectionButtonText" xml:space="preserve">
+    <value>Start Inspection</value>
+  </data>
+  <data name="Vietnamese" xml:space="preserve">
+    <value>Vietnamese</value>
+  </data>
+  <data name="MsgInspectionOverOKContent" xml:space="preserve">
+    <value>Congratulations ! {0}No issue found.</value>
+  </data>
+  <data name="MsgInspectionOverNGContent" xml:space="preserve">
+    <value>{0} issue(s) found.{1}Check list for details.</value>
+  </data>
+  <data name="MsgExportResultTitle" xml:space="preserve">
+    <value>Inspection result exported</value>
+  </data>
+  <data name="MsgExportResultContent" xml:space="preserve">
+    <value>File was saved at: {0}{1}</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MsgApplyInspectionResultNGTitle" xml:space="preserve">
+    <value>Highlight saved to file</value>
+  </data>
+  <data name="MsgApplyInspectionResultOKTitle" xml:space="preserve">
+    <value>Highlight cleared</value>
+  </data>
+  <data name="OpenNow" xml:space="preserve">
+    <value>Open now</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="MsgApplyInspectionResultContent" xml:space="preserve">
+    <value>Result was saved as {0} {1}Do you want to open the result?</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Save error</value>
+  </data>
+  <data name="FileIsOpenByOtherProcess" xml:space="preserve">
+    <value>Maybe the file was opened by other process, close file then try again.</value>
+  </data>
+  <data name="RestartNoiticeToastTitle" xml:space="preserve">
+    <value>Restart application needed</value>
+  </data>
+  <data name="RestartNoiticeToastContent" xml:space="preserve">
+    <value>Application need to restart to apply new language</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="HighContrast" xml:space="preserve">
+    <value>High contrast</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ExtractPagePlaceHolderText" xml:space="preserve">
+    <value>1-10 or 1,2,3,4</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="PasswordToOpen" xml:space="preserve">
+    <value>Password to open</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Extract" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="Extracted" xml:space="preserve">
+    <value>Extracted</value>
+  </data>
+  <data name="ExtractDescr" xml:space="preserve">
+    <value>Extract selected pages from a PDF file</value>
+  </data>
+  <data name="Merge" xml:space="preserve">
+    <value>Merge</value>
+  </data>
+  <data name="MergeDescr" xml:space="preserve">
+    <value>Merge multiple PDF file to one.</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="SecurityDescr" xml:space="preserve">
+    <value>Lock or unlock PDF file with password</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="PreviewAllPage" xml:space="preserve">
+    <value>Preview all page</value>
+  </data>
+  <data name="PreviewAllPageSub" xml:space="preserve">
+    <value>Preview all page of pdf file need more usage of RAM</value>
+  </data>
+  <data name="ExtractPages" xml:space="preserve">
+    <value>Extract pages</value>
+  </data>
+  <data name="Paging" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="PagingSub" xml:space="preserve">
+    <value>Paging for all page</value>
+  </data>
+  <data name="PagingPosition" xml:space="preserve">
+    <value>Paging position</value>
+  </data>
+  <data name="PagingTopLeft" xml:space="preserve">
+    <value>Top left</value>
+  </data>
+  <data name="PagingTopCenter" xml:space="preserve">
+    <value>Top center</value>
+  </data>
+  <data name="PagingTopRight" xml:space="preserve">
+    <value>Top right</value>
+  </data>
+  <data name="PagingBottomLeft" xml:space="preserve">
+    <value>Bottom left</value>
+  </data>
+  <data name="PagingBottomCenter" xml:space="preserve">
+    <value>Bottom center</value>
+  </data>
+  <data name="PagingBottomRight" xml:space="preserve">
+    <value>Bottom right</value>
+  </data>
+  <data name="PagingText" xml:space="preserve">
+    <value>Paging text</value>
+  </data>
+  <data name="PagingFont" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="PagingFontSize" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="PagingFontColor" xml:space="preserve">
+    <value>Font color</value>
+  </data>
+  <data name="PagingDefaultText" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="MsgExtractedTitle" xml:space="preserve">
+    <value>Extracted</value>
+  </data>
+  <data name="MsgExtractedContent" xml:space="preserve">
+    <value>Extracted page: {0}{1}File was saved as: {2}</value>
+  </data>
+  <data name="MsgInvalidPageNumberContent" xml:space="preserve">
+    <value>Allow number only. Ex: 1,2,3 or 1-3</value>
+  </data>
+  <data name="MsgInvalidPageNumberTitle" xml:space="preserve">
+    <value>Invalid page number</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Open file</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Select file</value>
+  </data>
+  <data name="RotateLeft" xml:space="preserve">
+    <value>Rotate left</value>
+  </data>
+  <data name="RotateRight" xml:space="preserve">
+    <value>Rotate right</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom in</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom out</value>
+  </data>
+  <data name="PagingFitToScreen" xml:space="preserve">
+    <value>Fit to screen</value>
+  </data>
+  <data name="SaveRotatedPdf" xml:space="preserve">
+    <value>Save rotated PDF</value>
+  </data>
+  <data name="AddPaging" xml:space="preserve">
+    <value>Add page numbers</value>
+  </data>
+  <data name="MsgRotationSavedTitle" xml:space="preserve">
+    <value>Rotated</value>
+  </data>
+  <data name="MsgRotationSavedContent" xml:space="preserve">
+    <value>Rotated pages saved to:{0}{1}</value>
+  </data>
+  <data name="MsgPagingSavedTitle" xml:space="preserve">
+    <value>Paging saved</value>
+  </data>
+  <data name="MsgPagingSavedContent" xml:space="preserve">
+    <value>Page numbers added to the document.{0}File was saved as: {1}</value>
+  </data>
+  <data name="MsgSelectPagingPositionTitle" xml:space="preserve">
+    <value>Select position</value>
+  </data>
+  <data name="MsgSelectPagingPositionContent" xml:space="preserve">
+    <value>Please select at least one location to place the page number.</value>
+  </data>
+  <data name="LanguageChangedToastTitle" xml:space="preserve">
+    <value>Language updated</value>
+  </data>
+  <data name="LanguageChangedToastContent" xml:space="preserve">
+    <value>Your display language has been changed.</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>User password</value>
+  </data>
+  <data name="OwnerPassword" xml:space="preserve">
+    <value>Owner password</value>
+  </data>
+
+  <data name="ColorBlack" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="ColorBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="ColorRed" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="ColorWhite" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="ColorGreen" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="ColorYellow" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="ColorOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="ColorPurple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="ColorGray" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+
+  <data name="AddFile" xml:space="preserve">
+    <value>Add file</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="PageCount" xml:space="preserve">
+    <value>Page count</value>
+  </data>
+  <data name="ModifiedDate" xml:space="preserve">
+    <value>Modified date</value>
+  </data>
+  <data name="SetPasswordAfterMerge" xml:space="preserve">
+    <value>Set password after merge</value>
+  </data>
+  <data name="AllowPrint" xml:space="preserve">
+    <value>Allow printing</value>
+  </data>
+  <data name="AllowCopy" xml:space="preserve">
+    <value>Allow copying</value>
+  </data>
+  <data name="AllowFillIn" xml:space="preserve">
+    <value>Allow form filling</value>
+  </data>
+  <data name="AllowModifyAnnotations" xml:space="preserve">
+    <value>Allow modifying annotations</value>
+  </data>
+  <data name="AllowModifyContents" xml:space="preserve">
+    <value>Allow modifying contents</value>
+  </data>
+  <data name="AllowScreenReaders" xml:space="preserve">
+    <value>Allow screen readers</value>
+  </data>
+  <data name="AllowAssembly" xml:space="preserve">
+    <value>Allow document assembly</value>
+  </data>
+  <data name="MergeDefaultFileName" xml:space="preserve">
+    <value>Merged_{0}_files</value>
+  </data>
+  <data name="ProtectPasswordCaption" xml:space="preserve">
+    <value>The output PDF will be protected with these passwords.</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="MergeSuccessContent" xml:space="preserve">
+    <value>Merged {0} file(s) with {1} total page(s).</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="PasswordForFile" xml:space="preserve">
+    <value>Password for: {0}</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Wrong password</value>
+  </data>
+  <data name="WrongPasswordContent" xml:space="preserve">
+    <value>{0}
+Try another password.</value>
+  </data>
+  <data name="OpenFileError" xml:space="preserve">
+    <value>Open file error</value>
+  </data>
+  <data name="SelectFileTitle" xml:space="preserve">
+    <value>Select source</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="SelectOutput" xml:space="preserve">
+    <value>Select output</value>
+  </data>
+  <data name="OutputFolderLabel" xml:space="preserve">
+    <value>Output folder:</value>
+  </data>
+  <data name="RenameOutputFile" xml:space="preserve">
+    <value>Rename output file</value>
+  </data>
+  <data name="PrefixNamePlaceholder" xml:space="preserve">
+    <value>Prefix for file name</value>
+  </data>
+  <data name="Protect" xml:space="preserve">
+    <value>Protect</value>
+  </data>
+  <data name="UnProtect" xml:space="preserve">
+    <value>Remove protection</value>
+  </data>
+  <data name="SelectedFileLabel" xml:space="preserve">
+    <value>Selected file:</value>
+  </data>
+  <data name="SelectedFolderLabel" xml:space="preserve">
+    <value>Selected folder:</value>
+  </data>
+  <data name="SelectPdfFolderTitle" xml:space="preserve">
+    <value>Select PDF folder</value>
+  </data>
+  <data name="SelectOutputFolderTitle" xml:space="preserve">
+    <value>Select output folder</value>
+  </data>
+  <data name="EnterProtectPassword" xml:space="preserve">
+    <value>Enter protect password</value>
+  </data>
+  <data name="PasswordWasSet" xml:space="preserve">
+    <value>Password was set.</value>
+  </data>
+  <data name="FilesProtectedSummary" xml:space="preserve">
+    <value>{0}/{1} files were protected.</value>
+  </data>
+  <data name="OpenOutput" xml:space="preserve">
+    <value>Open output</value>
+  </data>
+  <data name="ProtectedFile" xml:space="preserve">
+    <value>Protected file</value>
+  </data>
+  <data name="ProtectedFileContent" xml:space="preserve">
+    <value>{0}
+This file is already protected.</value>
+  </data>
+  <data name="RemovedPasswordNotice" xml:space="preserve">
+    <value>{0}
+Password has been removed.</value>
+  </data>
+  <data name="FilePassword" xml:space="preserve">
+    <value>File password</value>
+  </data>
+  <data name="EnterFilePassword" xml:space="preserve">
+    <value>Enter file password</value>
+  </data>
+  <data name="FileInUse" xml:space="preserve">
+    <value>File in use</value>
+  </data>
+  <data name="Watermark" xml:space="preserve">
+    <value>Watermark</value>
+  </data>
+  <data name="WatermarkDescr" xml:space="preserve">
+    <value>Add text or image watermarks to your PDF files.</value>
+  </data>
+  <data name="WatermarkOptions" xml:space="preserve">
+    <value>Watermark options</value>
+  </data>
+  <data name="WatermarkSource" xml:space="preserve">
+    <value>Watermark source</value>
+  </data>
+  <data name="WatermarkTypeText" xml:space="preserve">
+    <value>Text watermark</value>
+  </data>
+  <data name="WatermarkTypeImage" xml:space="preserve">
+    <value>Image watermark</value>
+  </data>
+  <data name="WatermarkTextLabel" xml:space="preserve">
+    <value>Watermark text</value>
+  </data>
+  <data name="WatermarkTextColor" xml:space="preserve">
+    <value>Text color</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="WatermarkFontSize" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="WatermarkImageLabel" xml:space="preserve">
+    <value>Watermark image</value>
+  </data>
+  <data name="BrowseImage" xml:space="preserve">
+    <value>Select image</value>
+  </data>
+  <data name="WatermarkScale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="WatermarkOpacity" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="WatermarkRotation" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
+  <data name="WatermarkHorizontalPosition" xml:space="preserve">
+    <value>Horizontal position</value>
+  </data>
+  <data name="WatermarkVerticalPosition" xml:space="preserve">
+    <value>Vertical position</value>
+  </data>
+  <data name="ApplyWatermark" xml:space="preserve">
+    <value>Apply watermark</value>
+  </data>
+  <data name="SetPasswordAfterWatermark" xml:space="preserve">
+    <value>Set password after watermark</value>
+  </data>
+  <data name="WatermarkSuccessSingle" xml:space="preserve">
+    <value>Watermark added to: {0}</value>
+  </data>
+  <data name="WatermarkSuccessMultiple" xml:space="preserve">
+    <value>Watermark added to {0} file(s).</value>
+  </data>
+  <data name="WatermarkPreviewPlaceholder" xml:space="preserve">
+    <value>Select a PDF to preview the watermark placement.</value>
+  </data>
+  <data name="WatermarkPreviewPrevious" xml:space="preserve">
+    <value>Previous page</value>
+  </data>
+  <data name="WatermarkPreviewNext" xml:space="preserve">
+    <value>Next page</value>
+  </data>
+  <data name="WatermarkPreviewZoomOut" xml:space="preserve">
+    <value>Zoom out</value>
+  </data>
+  <data name="WatermarkPreviewZoomIn" xml:space="preserve">
+    <value>Zoom in</value>
+  </data>
+  <data name="WatermarkPreviewFit" xml:space="preserve">
+    <value>Fit to screen</value>
+  </data>
+  <data name="WatermarkSampleOutput" xml:space="preserve">
+    <value>Resulting file name: {0}</value>
+  </data>
+  <data name="SelectImageFile" xml:space="preserve">
+    <value>Select watermark image</value>
+  </data>
+  <data name="NoPdfFound" xml:space="preserve">
+    <value>No PDF file found.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+
+</root>
