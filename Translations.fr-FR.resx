@@ -1,0 +1,638 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:schema id="root">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:element name="root" ns1:IsDataSet="true">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="metadata">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" />
+              </xs:sequence>
+              <xs:attribute name="name" use="required" type="xsd:string" />
+              <xs:attribute name="type" type="xsd:string" />
+              <xs:attribute name="mimetype" type="xsd:string" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="assembly">
+            <xs:complexType>
+              <xs:attribute name="alias" type="xsd:string" />
+              <xs:attribute name="name" type="xsd:string" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="data">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+                <xs:element name="comment" type="xsd:string" minOccurs="0" ns1:Ordinal="2" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" ns1:Ordinal="1" />
+              <xs:attribute name="type" type="xsd:string" ns1:Ordinal="3" />
+              <xs:attribute name="mimetype" type="xsd:string" ns1:Ordinal="4" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="resheader">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" />
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Theme" xml:space="preserve">
+    <value>Thème</value>
+  </data>
+  <data name="ThemeSubtitle" xml:space="preserve">
+    <value>Sélectionnez le thème de l'application</value>
+  </data>
+  <data name="ApplyInspectionResultButtonText" xml:space="preserve">
+    <value>Appliquer le résultat de l'inspection sur le fichier AWI</value>
+  </data>
+  <data name="DestinationCount" xml:space="preserve">
+    <value>Destination :</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Anglais (US)</value>
+  </data>
+  <data name="ExcelWorkbook" xml:space="preserve">
+    <value>Classeur Excel</value>
+  </data>
+  <data name="ExportInspectionResultButtonText" xml:space="preserve">
+    <value>Exporter le résultat sous...</value>
+  </data>
+  <data name="FileLoadedToastHeader" xml:space="preserve">
+    <value>Fichier chargé</value>
+  </data>
+  <data name="FileUnloadedToastContent" xml:space="preserve">
+    <value>Vous devez sélectionner un AWI pour continuer</value>
+  </data>
+  <data name="FileUnloadedToastHeader" xml:space="preserve">
+    <value>Fichier déchargé</value>
+  </data>
+  <data name="MsgInspectionOverTitle" xml:space="preserve">
+    <value>Inspection terminée</value>
+  </data>
+  <data name="InspectionResultHeader" xml:space="preserve">
+    <value>Résultat de l'inspection</value>
+  </data>
+  <data name="Inspector" xml:space="preserve">
+    <value>Inspecteur</value>
+  </data>
+  <data name="IssueCountText" xml:space="preserve">
+    <value>Problème détecté :</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Système (utiliser la langue de l'appareil)</value>
+  </data>
+  <data name="LanguageSubtitle" xml:space="preserve">
+    <value>Sélectionnez la langue d'affichage de l'application</value>
+  </data>
+  <data name="MsgWrongFileContent" xml:space="preserve">
+    <value>Le fichier Excel n'est pas valide ou ne contient pas la feuille 'Accessories' {0} Veuillez sélectionner de nouveau</value>
+  </data>
+  <data name="MsgWrongFileTitle" xml:space="preserve">
+    <value>Mauvais AWI sélectionné</value>
+  </data>
+  <data name="NGContentCol" xml:space="preserve">
+    <value>Contenu NG</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Personnalisation</value>
+  </data>
+  <data name="SelectFileButtonnText" xml:space="preserve">
+    <value>Sélectionner un fichier AWI</value>
+  </data>
+  <data name="SelectFileDialogTitle" xml:space="preserve">
+    <value>Sélectionnez un fichier AWI</value>
+  </data>
+  <data name="SelectModelCaptionText" xml:space="preserve">
+    <value>Choisir un modèle</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="StartInspectionButtonText" xml:space="preserve">
+    <value>Démarrer l'inspection</value>
+  </data>
+  <data name="Vietnamese" xml:space="preserve">
+    <value>Vietnamien</value>
+  </data>
+  <data name="Japanese" xml:space="preserve">
+    <value>Japonais</value>
+  </data>
+  <data name="ChineseSimplified" xml:space="preserve">
+    <value>Chinois (simplifié)</value>
+  </data>
+  <data name="ChineseTraditional" xml:space="preserve">
+    <value>Chinois (traditionnel)</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="MsgInspectionOverOKContent" xml:space="preserve">
+    <value>Félicitations ! {0}Aucun problème détecté.</value>
+  </data>
+  <data name="MsgInspectionOverNGContent" xml:space="preserve">
+    <value>{0} problème(s) détecté(s).{1}Consultez la liste pour plus de détails.</value>
+  </data>
+  <data name="MsgExportResultTitle" xml:space="preserve">
+    <value>Résultat de l'inspection exporté</value>
+  </data>
+  <data name="MsgExportResultContent" xml:space="preserve">
+    <value>Le fichier a été enregistré à : {0}{1}</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="MsgApplyInspectionResultNGTitle" xml:space="preserve">
+    <value>Surlignage enregistré dans le fichier</value>
+  </data>
+  <data name="MsgApplyInspectionResultOKTitle" xml:space="preserve">
+    <value>Surlignage effacé</value>
+  </data>
+  <data name="OpenNow" xml:space="preserve">
+    <value>Ouvrir maintenant</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>Plus tard</value>
+  </data>
+  <data name="MsgApplyInspectionResultContent" xml:space="preserve">
+    <value>Le résultat a été enregistré sous {0} {1}Souhaitez-vous ouvrir le résultat ?</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Erreur d'enregistrement</value>
+  </data>
+  <data name="FileIsOpenByOtherProcess" xml:space="preserve">
+    <value>Le fichier est peut-être ouvert par un autre processus, fermez-le puis réessayez.</value>
+  </data>
+  <data name="RestartNoiticeToastTitle" xml:space="preserve">
+    <value>Redémarrage de l'application requis</value>
+  </data>
+  <data name="RestartNoiticeToastContent" xml:space="preserve">
+    <value>L'application doit être redémarrée pour appliquer la nouvelle langue</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Clair</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Sombre</value>
+  </data>
+  <data name="HighContrast" xml:space="preserve">
+    <value>Contraste élevé</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Système</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ExtractPagePlaceHolderText" xml:space="preserve">
+    <value>1-10 ou 1,2,3,4</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="PasswordToOpen" xml:space="preserve">
+    <value>Mot de passe d'ouverture</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Extract" xml:space="preserve">
+    <value>Extraire</value>
+  </data>
+  <data name="Extracted" xml:space="preserve">
+    <value>Extrait</value>
+  </data>
+  <data name="ExtractDescr" xml:space="preserve">
+    <value>Extraire les pages sélectionnées d'un fichier PDF</value>
+  </data>
+  <data name="Merge" xml:space="preserve">
+    <value>Fusionner</value>
+  </data>
+  <data name="MergeDescr" xml:space="preserve">
+    <value>Fusionner plusieurs fichiers PDF en un seul.</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Sécurité</value>
+  </data>
+  <data name="SecurityDescr" xml:space="preserve">
+    <value>Verrouiller ou déverrouiller un PDF avec un mot de passe</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="PreviewAllPage" xml:space="preserve">
+    <value>Prévisualiser toutes les pages</value>
+  </data>
+  <data name="PreviewAllPageSub" xml:space="preserve">
+    <value>Prévisualiser toutes les pages du PDF nécessite plus de mémoire</value>
+  </data>
+  <data name="ExtractPages" xml:space="preserve">
+    <value>Extraire des pages</value>
+  </data>
+  <data name="Paging" xml:space="preserve">
+    <value>Pagination</value>
+  </data>
+  <data name="PagingSub" xml:space="preserve">
+    <value>Pagination pour toutes les pages</value>
+  </data>
+  <data name="PagingPosition" xml:space="preserve">
+    <value>Position de la pagination</value>
+  </data>
+  <data name="PagingTopLeft" xml:space="preserve">
+    <value>Haut gauche</value>
+  </data>
+  <data name="PagingTopCenter" xml:space="preserve">
+    <value>Haut centre</value>
+  </data>
+  <data name="PagingTopRight" xml:space="preserve">
+    <value>Haut droite</value>
+  </data>
+  <data name="PagingBottomLeft" xml:space="preserve">
+    <value>Bas gauche</value>
+  </data>
+  <data name="PagingBottomCenter" xml:space="preserve">
+    <value>Bas centre</value>
+  </data>
+  <data name="PagingBottomRight" xml:space="preserve">
+    <value>Bas droite</value>
+  </data>
+  <data name="PagingText" xml:space="preserve">
+    <value>Texte de pagination</value>
+  </data>
+  <data name="PagingFont" xml:space="preserve">
+    <value>Police</value>
+  </data>
+  <data name="PagingFontSize" xml:space="preserve">
+    <value>Taille de police</value>
+  </data>
+  <data name="PagingFontColor" xml:space="preserve">
+    <value>Couleur de police</value>
+  </data>
+  <data name="PagingDefaultText" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="MsgExtractedTitle" xml:space="preserve">
+    <value>Extrait</value>
+  </data>
+  <data name="MsgExtractedContent" xml:space="preserve">
+    <value>Pages extraites : {0}{1}Fichier enregistré sous : {2}</value>
+  </data>
+  <data name="MsgInvalidPageNumberContent" xml:space="preserve">
+    <value>N'autorise que des chiffres. Ex. : 1,2,3 ou 1-3</value>
+  </data>
+  <data name="MsgInvalidPageNumberTitle" xml:space="preserve">
+    <value>Numéro de page invalide</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Ouvrir un fichier</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Sélectionner un fichier</value>
+  </data>
+  <data name="RotateLeft" xml:space="preserve">
+    <value>Pivoter à gauche</value>
+  </data>
+  <data name="RotateRight" xml:space="preserve">
+    <value>Pivoter à droite</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Agrandir</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Réduire</value>
+  </data>
+  <data name="PagingFitToScreen" xml:space="preserve">
+    <value>Ajuster à l'écran</value>
+  </data>
+  <data name="SaveRotatedPdf" xml:space="preserve">
+    <value>Enregistrer le PDF pivoté</value>
+  </data>
+  <data name="AddPaging" xml:space="preserve">
+    <value>Ajouter des numéros de page</value>
+  </data>
+  <data name="MsgRotationSavedTitle" xml:space="preserve">
+    <value>Pivoté</value>
+  </data>
+  <data name="MsgRotationSavedContent" xml:space="preserve">
+    <value>Pages pivotées enregistrées dans :{0}{1}</value>
+  </data>
+  <data name="MsgPagingSavedTitle" xml:space="preserve">
+    <value>Pagination enregistrée</value>
+  </data>
+  <data name="MsgPagingSavedContent" xml:space="preserve">
+    <value>Numéros de page ajoutés au document.{0}Fichier enregistré sous : {1}</value>
+  </data>
+  <data name="MsgSelectPagingPositionTitle" xml:space="preserve">
+    <value>Sélectionner une position</value>
+  </data>
+  <data name="MsgSelectPagingPositionContent" xml:space="preserve">
+    <value>Veuillez sélectionner au moins un emplacement pour placer le numéro de page.</value>
+  </data>
+  <data name="LanguageChangedToastTitle" xml:space="preserve">
+    <value>Langue mise à jour</value>
+  </data>
+  <data name="LanguageChangedToastContent" xml:space="preserve">
+    <value>Votre langue d'affichage a été modifiée.</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Mot de passe utilisateur</value>
+  </data>
+  <data name="OwnerPassword" xml:space="preserve">
+    <value>Mot de passe propriétaire</value>
+  </data>
+
+  <data name="ColorBlack" xml:space="preserve">
+    <value>Noir</value>
+  </data>
+  <data name="ColorBlue" xml:space="preserve">
+    <value>Bleu</value>
+  </data>
+  <data name="ColorRed" xml:space="preserve">
+    <value>Rouge</value>
+  </data>
+  <data name="ColorWhite" xml:space="preserve">
+    <value>Blanc</value>
+  </data>
+  <data name="ColorGreen" xml:space="preserve">
+    <value>Vert</value>
+  </data>
+  <data name="ColorYellow" xml:space="preserve">
+    <value>Jaune</value>
+  </data>
+  <data name="ColorOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="ColorPurple" xml:space="preserve">
+    <value>Violet</value>
+  </data>
+  <data name="ColorGray" xml:space="preserve">
+    <value>Gris</value>
+  </data>
+
+  <data name="AddFile" xml:space="preserve">
+    <value>Ajouter un fichier</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Taille du fichier</value>
+  </data>
+  <data name="PageCount" xml:space="preserve">
+    <value>Nombre de pages</value>
+  </data>
+  <data name="ModifiedDate" xml:space="preserve">
+    <value>Date de modification</value>
+  </data>
+  <data name="SetPasswordAfterMerge" xml:space="preserve">
+    <value>Définir un mot de passe après la fusion</value>
+  </data>
+  <data name="AllowPrint" xml:space="preserve">
+    <value>Autoriser l'impression</value>
+  </data>
+  <data name="AllowCopy" xml:space="preserve">
+    <value>Autoriser la copie</value>
+  </data>
+  <data name="AllowFillIn" xml:space="preserve">
+    <value>Autoriser le remplissage</value>
+  </data>
+  <data name="AllowModifyAnnotations" xml:space="preserve">
+    <value>Autoriser la modification des annotations</value>
+  </data>
+  <data name="AllowModifyContents" xml:space="preserve">
+    <value>Autoriser la modification du contenu</value>
+  </data>
+  <data name="AllowScreenReaders" xml:space="preserve">
+    <value>Autoriser les lecteurs d'écran</value>
+  </data>
+  <data name="AllowAssembly" xml:space="preserve">
+    <value>Autoriser l'assemblage</value>
+  </data>
+  <data name="MergeDefaultFileName" xml:space="preserve">
+    <value>Fusionné</value>
+  </data>
+  <data name="ProtectPasswordCaption" xml:space="preserve">
+    <value>Protéger par mot de passe</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Entrer le mot de passe</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuer</value>
+  </data>
+  <data name="MergeSuccessContent" xml:space="preserve">
+    <value>Le fichier fusionné a été enregistré sous : {0}</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Réussi</value>
+  </data>
+  <data name="PasswordForFile" xml:space="preserve">
+    <value>Mot de passe pour : {0}</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Mot de passe incorrect</value>
+  </data>
+  <data name="WrongPasswordContent" xml:space="preserve">
+    <value>{0}
+Essayez un autre mot de passe.</value>
+  </data>
+  <data name="OpenFileError" xml:space="preserve">
+    <value>Erreur d'ouverture du fichier</value>
+  </data>
+  <data name="SelectFileTitle" xml:space="preserve">
+    <value>Sélectionner la source</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>Ouvrir le dossier</value>
+  </data>
+  <data name="SelectOutput" xml:space="preserve">
+    <value>Sélectionner la sortie</value>
+  </data>
+  <data name="OutputFolderLabel" xml:space="preserve">
+    <value>Dossier de sortie :</value>
+  </data>
+  <data name="RenameOutputFile" xml:space="preserve">
+    <value>Renommer le fichier de sortie</value>
+  </data>
+  <data name="PrefixNamePlaceholder" xml:space="preserve">
+    <value>Préfixe du nom de fichier</value>
+  </data>
+  <data name="Protect" xml:space="preserve">
+    <value>Protéger</value>
+  </data>
+  <data name="UnProtect" xml:space="preserve">
+    <value>Supprimer la protection</value>
+  </data>
+  <data name="SelectedFileLabel" xml:space="preserve">
+    <value>Fichier sélectionné :</value>
+  </data>
+  <data name="SelectedFolderLabel" xml:space="preserve">
+    <value>Dossier sélectionné :</value>
+  </data>
+  <data name="SelectPdfFolderTitle" xml:space="preserve">
+    <value>Sélectionner le dossier PDF</value>
+  </data>
+  <data name="SelectOutputFolderTitle" xml:space="preserve">
+    <value>Sélectionner le dossier de sortie</value>
+  </data>
+  <data name="EnterProtectPassword" xml:space="preserve">
+    <value>Entrer le mot de passe de protection</value>
+  </data>
+  <data name="PasswordWasSet" xml:space="preserve">
+    <value>Le mot de passe a été défini.</value>
+  </data>
+  <data name="FilesProtectedSummary" xml:space="preserve">
+    <value>{0}/{1} fichiers ont été protégés.</value>
+  </data>
+  <data name="OpenOutput" xml:space="preserve">
+    <value>Ouvrir la sortie</value>
+  </data>
+  <data name="ProtectedFile" xml:space="preserve">
+    <value>Fichier protégé</value>
+  </data>
+  <data name="ProtectedFileContent" xml:space="preserve">
+    <value>{0}
+Ce fichier est déjà protégé.</value>
+  </data>
+  <data name="RemovedPasswordNotice" xml:space="preserve">
+    <value>{0}
+Le mot de passe a été supprimé.</value>
+  </data>
+  <data name="FilePassword" xml:space="preserve">
+    <value>Mot de passe du fichier</value>
+  </data>
+  <data name="EnterFilePassword" xml:space="preserve">
+    <value>Saisir le mot de passe du fichier</value>
+  </data>
+  <data name="FileInUse" xml:space="preserve">
+    <value>Fichier en cours d'utilisation</value>
+  </data>
+  <data name="Watermark" xml:space="preserve">
+    <value>Filigrane</value>
+  </data>
+  <data name="WatermarkDescr" xml:space="preserve">
+    <value>Ajoutez des filigranes texte ou image à vos fichiers PDF.</value>
+  </data>
+  <data name="WatermarkOptions" xml:space="preserve">
+    <value>Options de filigrane</value>
+  </data>
+  <data name="WatermarkSource" xml:space="preserve">
+    <value>Source du filigrane</value>
+  </data>
+  <data name="WatermarkTypeText" xml:space="preserve">
+    <value>Filigrane texte</value>
+  </data>
+  <data name="WatermarkTypeImage" xml:space="preserve">
+    <value>Filigrane image</value>
+  </data>
+  <data name="WatermarkTextLabel" xml:space="preserve">
+    <value>Texte du filigrane</value>
+  </data>
+  <data name="WatermarkTextColor" xml:space="preserve">
+    <value>Couleur du texte</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Sélectionner une couleur</value>
+  </data>
+  <data name="WatermarkFontSize" xml:space="preserve">
+    <value>Taille de police</value>
+  </data>
+  <data name="WatermarkImageLabel" xml:space="preserve">
+    <value>Image du filigrane</value>
+  </data>
+  <data name="BrowseImage" xml:space="preserve">
+    <value>Sélectionner une image</value>
+  </data>
+  <data name="WatermarkScale" xml:space="preserve">
+    <value>Échelle</value>
+  </data>
+  <data name="WatermarkOpacity" xml:space="preserve">
+    <value>Opacité</value>
+  </data>
+  <data name="WatermarkRotation" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
+  <data name="WatermarkHorizontalPosition" xml:space="preserve">
+    <value>Position horizontale</value>
+  </data>
+  <data name="WatermarkVerticalPosition" xml:space="preserve">
+    <value>Position verticale</value>
+  </data>
+  <data name="ApplyWatermark" xml:space="preserve">
+    <value>Appliquer le filigrane</value>
+  </data>
+  <data name="SetPasswordAfterWatermark" xml:space="preserve">
+    <value>Définir un mot de passe après le filigrane</value>
+  </data>
+  <data name="WatermarkSuccessSingle" xml:space="preserve">
+    <value>Filigrane ajouté à : {0}</value>
+  </data>
+  <data name="WatermarkSuccessMultiple" xml:space="preserve">
+    <value>Filigrane ajouté à {0} fichier(s).</value>
+  </data>
+  <data name="WatermarkPreviewPlaceholder" xml:space="preserve">
+    <value>Sélectionnez un PDF pour prévisualiser le positionnement du filigrane.</value>
+  </data>
+  <data name="WatermarkPreviewPrevious" xml:space="preserve">
+    <value>Page précédente</value>
+  </data>
+  <data name="WatermarkPreviewNext" xml:space="preserve">
+    <value>Page suivante</value>
+  </data>
+  <data name="WatermarkPreviewZoomOut" xml:space="preserve">
+    <value>Réduire</value>
+  </data>
+  <data name="WatermarkPreviewZoomIn" xml:space="preserve">
+    <value>Agrandir</value>
+  </data>
+  <data name="WatermarkPreviewFit" xml:space="preserve">
+    <value>Ajuster à l'écran</value>
+  </data>
+  <data name="WatermarkSampleOutput" xml:space="preserve">
+    <value>Nom du fichier résultant : {0}</value>
+  </data>
+  <data name="SelectImageFile" xml:space="preserve">
+    <value>Sélectionner l'image du filigrane</value>
+  </data>
+  <data name="NoPdfFound" xml:space="preserve">
+    <value>Aucun fichier PDF trouvé.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+
+</root>
